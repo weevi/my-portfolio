@@ -1,95 +1,183 @@
-var slidingNav = document.getElementById("nav-slide");
-var slidingBurger = document.getElementById("burger-slide");
-var navState = "visible";
-var burgerState = "hidden";
-var burgerClick = false;
-var navClick = false;
+// navbar
 
-slidingNav.addEventListener("click", hideNav);
+var nav = document.getElementById("nav-slide");
+var burger = document.getElementById("burger-slide");
 
-slidingBurger.addEventListener("click", showNav);
+nav.addEventListener('click', navHide);
+burger.addEventListener('click', burgerHide);
 
-scrollPos = 50;
-window.addEventListener("scroll", function (event) {
-if (this.scrollY > scrollPos)
-{
-hideNav(); 
-}
-else
-{
-showNav();
-}
-});
-
-function hideNav() {
-navClick = true;
-burgerClick = false;
-slidingNav.classList.add("nav-hide");
-slidingNav.addEventListener("transitionend", function(event)
-{
-if (burgerState == "hidden" && burgerClick === false && navClick === true) {
-slidingBurger.classList.add("burger-show");
-navState = "hidden";
-burgerState = "visible";
-
-}
-}, false); 
+function navHide() {
+    nav.style.top="-250px";
+    burger.style.right="0";
 }
 
-function showNav() {
-burgerClick = true;
-navClick = false;
-slidingBurger.classList.remove("burger-show");
-slidingBurger.addEventListener("transitionend", function(event) { 
-if (burgerState === "visible" && burgerClick === true && navClick === false){
-slidingNav.classList.remove("nav-hide");
-navState = "visible";
-burgerState = "hidden";
-burgerClick = false;
+function burgerHide() {
+    nav.style.top="0";
+    burger.style.right="-100px";
 }
-}, false); 
+
+// easter egg
+
+
+var desctopPopup = document.getElementById("easteregg");
+var resizedPopup = document.getElementById("easteregg2");
+var width = screen.width;
+var showing = false;
+
+
+
+window.addEventListener("resize", function (event) {
+    getWidth(document.body.clientWidth);
+})
+
+
+function getWidth(currentWidth) {
+    if (currentWidth <= 650 && currentWidth >= 485) {
+        resizedPopup.style.display = "block";
+        desctopPopup.style.display = "none";
+    }
 }
+
+
+setTimeout(function () {
+    document.getElementById('easteregg2').className = 'hide';
+}, 5000);
+
+
+
+function showPopup() {
+    if (width >= 1200) {
+        desctopPopup.style.display = "block";
+        showing = true;
+    } else {
+        desctopPopup.style.display = "none";
+        var showing = false;
+    }
+}
+
+showPopup();
 
 $(document).ready(function () {
-    
-        
-    $(".icon-wrap").click(function() {
-    $(this).parent().hide();
-});
-    
-    $("#home").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#hero").offset().top
-    }, 1000);
+
+    $(".icon-wrap").click(function () {
+        $(this).parent().hide();
+    });
+
+    $("#home").click(function () {
+        $('html, body').animate({
+            scrollTop: $("#home-section").offset().top
+        }, 1000);
+    });
+
+    $("#about").click(function () {
+        $('html, body').animate({
+            scrollTop: $("#about-me").offset().top
+        }, 1000);
+    });
+
+    $("#work").click(function () {
+        $('html, body').animate({
+            scrollTop: $("#my-work").offset().top
+        }, 1000);
+    });
+
+    $("#contact").click(function () {
+        $('html, body').animate({
+            scrollTop: $("#my-contact").offset().top
+        }, 1000);
+    });
+
+
+
+
+    // header animation 
+
+    $("#js-rotating").Morphext({
+        // The [in] animation type. Refer to Animate.css for a list of available animations.
+        animation: "flipInX",
+        // An array of phrases to rotate are created based on this separator. Change it if you wish to separate the phrases differently (e.g. So Simple | Very Doge | Much Wow | Such Cool).
+        separator: ",",
+        // The delay between the changing of each phrase in milliseconds.
+        speed: 2000,
+        complete: function () {
+            // Called after the entrance animation is executed.
+        }
+    });
 });
 
-$("#about").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#about-me").offset().top
-    }, 1000);
-});
+function getWidth(currentWidth) {
+    if (currentWidth <= 650 && currentWidth >= 485) {
+        egg2.style.display = "block";
+        egg.style.display = "none";
+    } else if (currentWidth <= 485){
+                nav.classList.add("nav-hide");
+        burger.classList.add("burger-show");
+    }
+}
 
-$("#work").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#my-work").offset().top
-    }, 1000);
-});
 
-$("#contact").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#contact-me").offset().top
-    }, 1000);
-});
+setTimeout(function () {
+    document.getElementById('easteregg2').className = 'hide';
+}, 5000);
 
-                $("#js-rotating").Morphext({
-                    // The [in] animation type. Refer to Animate.css for a list of available animations.
-                    animation: "flipInX",
-                    // An array of phrases to rotate are created based on this separator. Change it if you wish to separate the phrases differently (e.g. So Simple | Very Doge | Much Wow | Such Cool).
-                    separator: ",",
-                    // The delay between the changing of each phrase in milliseconds.
-                    speed: 2000,
-                    complete: function () {
-                        // Called after the entrance animation is executed.
-                    }
-                });
-            });
+
+
+function ShowEgg() {
+    if (x >= 1200) {
+        egg.style.display = "block";
+        showing = true;
+    } else {
+        egg.style.display = "none";
+        var showing = false;
+    }
+}
+
+ShowEgg();
+
+$(document).ready(function () {
+
+    $(".icon-wrap").click(function () {
+        $(this).parent().hide();
+    });
+
+    $("#home").click(function () {
+        $('html, body').animate({
+            scrollTop: $("#home-section").offset().top
+        }, 1000);
+    });
+
+    $("#about").click(function () {
+        $('html, body').animate({
+            scrollTop: $("#about-me").offset().top
+        }, 1000);
+    });
+
+    $("#work").click(function () {
+        $('html, body').animate({
+            scrollTop: $("#my-work").offset().top
+        }, 1000);
+    });
+
+    $("#contact").click(function () {
+        $('html, body').animate({
+            scrollTop: $("#my-contact").offset().top
+        }, 1000);
+    });
+
+
+
+
+    // header animation 
+
+    $("#js-rotating").Morphext({
+        // The [in] animation type. Refer to Animate.css for a list of available animations.
+        animation: "flipInX",
+        // An array of phrases to rotate are created based on this separator. Change it if you wish to separate the phrases differently (e.g. So Simple | Very Doge | Much Wow | Such Cool).
+        separator: ",",
+        // The delay between the changing of each phrase in milliseconds.
+        speed: 2000,
+        complete: function () {
+            // Called after the entrance animation is executed.
+        }
+    });
+});
