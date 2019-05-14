@@ -83,7 +83,7 @@ $(document).ready(function () {
 
     $("#contact").click(function () {
         $('html, body').animate({
-            scrollTop: $("#my-contact").offset().top
+            scrollTop: $("#contact-me").offset().top
         }, 1000);
     });
 
@@ -105,79 +105,3 @@ $(document).ready(function () {
     });
 });
 
-function getWidth(currentWidth) {
-    if (currentWidth <= 650 && currentWidth >= 485) {
-        egg2.style.display = "block";
-        egg.style.display = "none";
-    } else if (currentWidth <= 485){
-                nav.classList.add("nav-hide");
-        burger.classList.add("burger-show");
-    }
-}
-
-
-setTimeout(function () {
-    document.getElementById('easteregg2').className = 'hide';
-}, 5000);
-
-
-
-function ShowEgg() {
-    if (x >= 1200) {
-        egg.style.display = "block";
-        showing = true;
-    } else {
-        egg.style.display = "none";
-        var showing = false;
-    }
-}
-
-ShowEgg();
-
-$(document).ready(function () {
-
-    $(".icon-wrap").click(function () {
-        $(this).parent().hide();
-    });
-
-    $("#home").click(function () {
-        $('html, body').animate({
-            scrollTop: $("#home-section").offset().top
-        }, 1000);
-    });
-
-    $("#about").click(function () {
-        $('html, body').animate({
-            scrollTop: $("#about-me").offset().top
-        }, 1000);
-    });
-
-    $("#work").click(function () {
-        $('html, body').animate({
-            scrollTop: $("#my-work").offset().top
-        }, 1000);
-    });
-
-    $("#contact").click(function () {
-        $('html, body').animate({
-            scrollTop: $("#my-contact").offset().top
-        }, 1000);
-    });
-
-
-
-
-    // header animation 
-
-    $("#js-rotating").Morphext({
-        // The [in] animation type. Refer to Animate.css for a list of available animations.
-        animation: "flipInX",
-        // An array of phrases to rotate are created based on this separator. Change it if you wish to separate the phrases differently (e.g. So Simple | Very Doge | Much Wow | Such Cool).
-        separator: ",",
-        // The delay between the changing of each phrase in milliseconds.
-        speed: 2000,
-        complete: function () {
-            // Called after the entrance animation is executed.
-        }
-    });
-});
