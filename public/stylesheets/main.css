@@ -199,6 +199,10 @@ div {
     font-family: 'Raleway', sans-serif;
 }
 
+.work-text span a {
+    color: white;
+}
+
 .work-text span {
     display: inline;
     padding: 0 10px 0 10px;
